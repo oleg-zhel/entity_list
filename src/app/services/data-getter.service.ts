@@ -24,6 +24,12 @@ export class DataGetterService {
       publish_year: 1998
     },
   ];
+  private username: string = '';
+
+  private users = [
+    'Admin', 'User1', 'User2'
+  ];
+
   constructor() { }
   getBooks(): Observable<Books[]>{
     return of(this.books);
@@ -33,5 +39,16 @@ export class DataGetterService {
   }
   deleteBook(index){
     this.books.splice(index,1);
+  }
+  public getUser(){
+    return this.username;
+  }
+
+  public setUser(user: string){
+    this.username = user;
+  }
+
+  public isUserExists(name: string){
+    return this.users.indexOf(name) !== -1;
   }
 }
